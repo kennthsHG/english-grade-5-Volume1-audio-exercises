@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+    <html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Unit4《 Helping in the community 》 - 尤米妈妈资料屋</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <style>
+            :root {
+                --primary: #78C1CA;
+                --bg-color: #0f172a;
+                --card-bg: rgba(30, 41, 59, 0.7);
+                --text-main: #f8fafc;
+                --text-dim: #94a3b8;
+                --glass-border: rgba(255, 255, 255, 0.1);
+            }
+
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                -webkit-tap-highlight-color: transparent;
+            }
+            
+            body {
+                font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+                background-color: var(--bg-color);
+                background-image: 
+                    radial-gradient(circle at 0% 0%, rgba(120, 193, 202, 0.15) 0%, transparent 50%),
+                    radial-gradient(circle at 100% 100%, rgba(168, 85, 247, 0.15) 0%, transparent 50%);
+                min-height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 20px;
+                color: var(--text-main);
+                line-height: 1.6;
+            }
+            
+            .container {
+                background: var(--card-bg);
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
+                border-radius: 28px;
+                border: 1px solid var(--glass-border);
+                width: 100%;
+                max-width: 480px;
+                padding: 32px;
+                box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            }
+
+            /* 顶部博主信息区域 */
+            .creator-profile {
+                display: flex;
+                align-items: center;
+                gap: 16px;
+                margin-bottom: 32px;
+                padding-bottom: 20px;
+                border-bottom: 1px solid var(--glass-border);
+            }
+
+            .avatar {
+                width: 56px;
+                height: 56px;
+                border-radius: 50%;
+                border: 2px solid var(--primary);
+                padding: 2px;
+                object-fit: cover;
+            }
+
+            .creator-info h2 {
+                font-size: 1.1rem;
+                font-weight: 600;
+                color: var(--text-main);
+            }
+
+            .creator-info p {
+                font-size: 0.85rem;
+                color: var(--text-dim);
+            }
+
+            /* 标题区 */
+            .header {
+                text-align: center;
+                margin-bottom: 32px;
+            }
+            
+            .header h1 {
+                font-size: 1.75rem;
+                font-weight: 800;
+                background: linear-gradient(to right, #fff, #94a3b8);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                margin-bottom: 8px;
+            }
+
+            /* 音频播放器样式重构 */
+            .audio-wrapper {
+                background: rgba(15, 23, 42, 0.6);
+                border-radius: 20px;
+                padding: 20px;
+                margin-bottom: 24px;
+                border: 1px solid var(--glass-border);
+            }
+            
+            audio {
+                width: 100%;
+                height: 40px;
+                filter: invert(100%) hue-rotate(180deg) brightness(1.5); /* 使原生播放器适配深色 */
+            }
+
+            /* 按钮组 */
+            .controls-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+                margin-bottom: 24px;
+            }
+            
+            .btn {
+                padding: 14px;
+                border: none;
+                border-radius: 14px;
+                font-size: 0.95rem;
+                font-weight: 600;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+                transition: all 0.2s ease;
+                text-decoration: none;
+            }
+            
+            .btn-primary {
+                background: var(--primary);
+                color: white;
+            }
+
+            .btn-secondary {
+                background: rgba(255, 255, 255, 0.05);
+                color: var(--text-main);
+                border: 1px solid var(--glass-border);
+            }
+            
+            .btn:hover {
+                transform: translateY(-2px);
+                filter: brightness(1.1);
+            }
+
+            /* 提示卡片 */
+            .tips-card {
+                background: rgba(120, 193, 202, 0.1);
+                border-radius: 16px;
+                padding: 16px;
+                border-left: 4px solid var(--primary);
+                margin-bottom: 24px;
+            }
+
+            .tips-card h3 {
+                font-size: 0.9rem;
+                color: var(--primary);
+                margin-bottom: 4px;
+                display: flex;
+                align-items: center;
+                gap: 6px;
+            }
+
+            .tips-card p {
+                font-size: 0.85rem;
+                color: var(--text-dim);
+            }
+
+            /* 底部信息 */
+            .footer {
+                text-align: center;
+                font-size: 0.75rem;
+                color: var(--text-dim);
+                margin-top: 32px;
+            }
+
+            .qr-area {
+                text-align: center;
+                margin-top: 24px;
+                padding-top: 24px;
+                border-top: 1px solid var(--glass-border);
+            }
+
+            #qrcode canvas {
+                border-radius: 12px;
+                background: white !important;
+                padding: 8px;
+            }
+
+            @media (max-width: 480px) {
+                .container { padding: 24px; }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="creator-profile">
+                <img src="https://raw.githubusercontent.com/kennthsHG/english-grade-5-Volume1-audio-exercises/main/avater/avaters.jpg" alt="Avatar" class="avatar" onerror="this.src='https://via.placeholder.com/100'">
+                <div class="creator-info">
+                    <h2>尤米妈妈资料屋</h2>
+                    <p>小红书 ID: 4736997830</p>
+                </div>
+            </div>
+
+            <div class="header">
+                <h1>四年级上册英语听力</h1>
+                <p style="color: var(--text-dim); font-size: 1.5rem;">Unit4《 Helping in the community 》</p>
+                <p style="color: var(--text-dim); font-size: 0.9rem;">听力练习</p>
+            </div>
+            
+            <div class="audio-wrapper">
+                <audio id="audioPlayer" controls>
+                    <source src="https://kennthsHG.github.io/english-grade-5-Volume1-audio-exercises/grade-4-audio/Unit_Listening_Unit4_Helping_in_the_community_20260105_182321.mp3" type="audio/mpeg">
+                </audio>
+            </div>
+            
+            <div class="controls-grid">
+                <button class="btn btn-primary" onclick="togglePlay()" id="playBtn">
+                    <i class="fas fa-play"></i> 立即播放
+                </button>
+                <button class="btn btn-secondary" onclick="restartAudio()">
+                    <i class="fas fa-redo"></i> 重播
+                </button>
+            </div>
+
+            <div class="tips-card">
+                <h3><i class="fas fa-lightbulb"></i> 温馨提示</h3>
+                <p>尤米妈妈原创资料 微信号:ymmm-zlw</p>
+            </div>
+            
+            <div class="qr-area">
+                <div id="qrcode"></div>
+                <p style="margin-top: 12px; font-size: 0.8rem; color: var(--text-dim);">微信扫码，同步练习</p>
+            </div>
+            
+            <div class="footer">
+                <p>© 2026 尤米妈妈资料屋 | 原创资料</p>
+                <p>更多小学原创资料可以小红书搜索“尤米妈妈资料屋”</p>
+            </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+        <script>
+            const audio = document.getElementById('audioPlayer');
+            const playBtn = document.getElementById('playBtn');
+
+            // 生成二维码
+            document.addEventListener('DOMContentLoaded', () => {
+                QRCode.toCanvas(
+                    document.getElementById('qrcode'),
+                    window.location.href,
+                    { width: 120, margin: 1, color: { dark: '#0f172a', light: '#ffffff' } },
+                    (error) => error && console.error(error)
+                );
+                
+                // 恢复进度
+                const saved = localStorage.getItem('audio_pos_93b6a26f');
+                if (saved) audio.currentTime = saved;
+            });
+
+            function togglePlay() {
+                if (audio.paused) {
+                    audio.play();
+                    playBtn.innerHTML = '<i class="fas fa-pause"></i> 暂停播放';
+                } else {
+                    audio.pause();
+                    playBtn.innerHTML = '<i class="fas fa-play"></i> 继续播放';
+                }
+            }
+
+            function restartAudio() {
+                audio.currentTime = 0;
+                audio.play();
+            }
+
+            // 自动保存进度
+            audio.addEventListener('timeupdate', () => {
+                localStorage.setItem('audio_pos_93b6a26f', audio.currentTime);
+            });
+        </script>
+    </body>
+    </html>
